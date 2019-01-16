@@ -1,3 +1,4 @@
 # @vuese/loader
 
-[TODO]
+<Badge text="WIP" type="warn"/>
+<Badge text="TODO" type="warn"/>
