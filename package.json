@@ -1,0 +1,12 @@
+{
+  "name": "vuese-website",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "dependencies": {
+    "vuepress": "^0.14.8"
+  }
+}
