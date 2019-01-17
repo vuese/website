@@ -105,7 +105,7 @@ export interface ParserOptions {
 
 * 类型：`ParserPlugin[]`
 
-用来指定 `babel parser` 的插件列表，全部列表可以查看：[https://babeljs.io/docs/en/babel-parser#plugins](https://babeljs.io/docs/en/babel-parser#plugins)
+用来为 `babel parser` 指定插件列表，全部列表可以查看：[https://babeljs.io/docs/en/babel-parser#plugins](https://babeljs.io/docs/en/babel-parser#plugins)
 
 :::tip
 babel 插件与babel parser 插件是两个不同的东西
@@ -223,12 +223,14 @@ Used to manually clear the form
 
 - 第一行文本的内容为 `'@vuese'`，当 `@vuese/parser` 遇到以字符 `@` 开头的文本时，会将其作为注解，并收集紧跟在注解之后的内容内容。
   - 由于 `@vuese` 后面没有内容，所以会分配给他一个空数组，此时的解析结果如下：
+
   ```js
   {
     default: [],
     vuese: []
   }
   ```
+
 - 接着开始解析第二行文本，由于第二行文本不包含注解，所以它会被当做默认注释内容，于是将它放到 `default` 数组中：
 
 ```js
@@ -237,6 +239,7 @@ Used to manually clear the form
   vuese: []
 }
 ```
+
 - 最后解析第三行文本，由于它包含注解 `@arg`，所以最后的结果如下：
 
 ```js
@@ -259,7 +262,7 @@ methods: {
 
 结果如下：
 
-```js
+```js {5,6}
 {
   default: ['Used to manually clear the form'],
   vuese: [],
