@@ -2,6 +2,10 @@
 
 > One-stop solution for vue component documentation
 
+:::danger
+This document is for `2.x`. If you use `1.x`, you should update to `2.x` because `2.x` is fully compatible with `1.x`.
+:::
+
 [Vuese](https://github.com/vuese/vuese) Automatically generate documentation for your `vue` component, and provides a variety of solutions for generating component documentation to meet your different needs.
 
 ## @vuese/cli

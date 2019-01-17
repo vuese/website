@@ -2,6 +2,10 @@
 
 > One-stop solution for vue component documentation
 
+:::danger
+这个文档是对于 `2.x` 的，如果你使用 `1.x`，你应该更新到 `2.x`，因为 `2.x` 完全兼容 `1.x`
+:::
+
 [Vuese](https://github.com/vuese/vuese) 为你的 `vue` 组件自动生成文档，它提供了多种生成组件文档的解决方案，用来满足你不同的需求。
 
 ## @vuese/cli
