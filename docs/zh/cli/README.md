@@ -90,11 +90,11 @@ props: {
 |---|---|---|---|---|
 |someProp|-|`String`|`false`|-|
 
-可以发现，叫做 `someProp` 的 `prop` 缺少描述(`Description`)，你只需要为 `someProp` 属性添加前置注释即可：
+可以发现，叫做 `someProp` 的 `prop` 缺少描述(`Description`)，你只需要为 `someProp` 属性添加前导注释即可：
 
 ```js {2}
 props: {
-  // 表格的名字
+  // 表单的名字
   someProp: {
     type: String
   }
@@ -105,13 +105,13 @@ props: {
 
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|someProp|表格的名字 |`String`|`false`|-|
+|someProp|表单的名字 |`String`|`false`|-|
 
-除此之外，我们也注意到表格中类型(`Type`)一栏的值是 `String`，它自动从 `someProp` 的 `type` 属性获取，但是有的时候你或许想要在文档中给用户展示更加明确的选择，很简单，你只需要为 `type` 属性添加前置注释即可，如下：
+除此之外，我们也注意到表格中类型(`Type`)一栏的值是 `String`，它自动从 `someProp` 的 `type` 属性获取，但是有的时候你或许想要在文档中给用户展示更加明确的选择，很简单，你只需要为 `type` 属性添加前导注释即可，如下：
 
 ```js {4}
 props: {
-  // 表格的名字
+  // 表单的名字
   name: {
     // `'TOP'` / `'BOTTOM'`
     type: String
@@ -123,9 +123,9 @@ props: {
 
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|someProp|表格的名字 |`'TOP'` / `'BOTTOM'`|`false`|-|
+|someProp|表单的名字 |`'TOP'` / `'BOTTOM'`|`false`|-|
 
-类似的，你可以为 `someProp` 指定默认值：
+你还可以为 `someProp` 指定默认值：
 
 ```js {7}
 props: {
@@ -143,9 +143,11 @@ props: {
 
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|someProp|表格的名字 |`'TOP'` / `'BOTTOM'`|`false`|'TOP'|
+|someProp|表单的名字 |`'TOP'` / `'BOTTOM'`|`false`|'TOP'|
 
-注意：你也可以通过给 `default` 属性添加前置注释来自定义默认值：
+::: tip
+你也可以通过给 `default` 属性添加前导注释来自定义默认值
+:::
 
 ```js {7}
 props: {
@@ -164,15 +166,15 @@ props: {
 
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|someProp|表格的名字 |`'TOP'` / `'BOTTOM'`|`false`|默认值是：`TOP`|
+|someProp|表单的名字 |`'TOP'` / `'BOTTOM'`|`false`|默认值是：`TOP`|
 
 :::tip 规则很简单
-使用 `Vuese` 生成文档时，如果你想自定义文档内容，那就为它添加前置注释。
+使用 `Vuese` 生成文档时，如果你想自定义文档内容，那就为它添加前导注释。
 :::
 
 ### slots
 
-#### 模板中的插槽 slots
+#### 模板中的插槽
 
 假设你的模板拥有一个具名插槽，并且该插槽拥有默认内容，如下：
 
@@ -188,7 +190,7 @@ props: {
 |---|---|---|
 |header|-|-|
 
-可以看到名字叫做 `header` 的插槽没有描述(`Description`)，同时也没有对默认插槽内容的描述，这时你只需要为其添加前置注释：
+可以看到名字叫做 `header` 的插槽没有描述(`Description`)，同时也没有对默认插槽内容的描述，这时你只需要为其添加前导注释：
 
 ```html
 <!-- Form header -->
@@ -214,10 +216,10 @@ props: {
 </slot>
 ```
 
-需要注意的是，注释内容 ``<!-- `<th>title</th>` -->`` 虽然是 `defaultHeader` 插槽的前置注释，但它并不会作为该插槽的描述，它依然是 `header` 插槽的默认内容的描述。为了给 `defaultHeader` 插槽添加描述，你需要为其添加另一个前置注释：
+需要注意的是，注释内容 ``<!-- `<th>title</th>` -->`` 虽然是 `defaultHeader` 插槽的前导注释，但它并不会作为该插槽的描述，它依然是 `header` 插槽的默认内容的描述。为了给 `defaultHeader` 插槽添加描述，你需要为其添加另一个前导注释：
 
 
-```html
+```html {4}
 <!-- Form header -->
 <slot name="header">
   <!-- `<th>title</th>` -->
@@ -257,7 +259,7 @@ methods: {
 |---|---|---|
 |onclear|-|-|
 
-只需要为其添加前置注释即可：
+只需要为其添加前导注释即可：
 
 ```js
 methods: {
@@ -339,9 +341,9 @@ methods: {
 |---|---|---|
 |clear|-|-|
 
-为了对该描述该方法和它的参数，你可以为其添加注释，规则与 `events` 相同：
+为了描述该方法和它的参数，你可以为其添加注释，规则与 `events` 相同：
 
-```js {}
+```js {3,4}
 methods: {
   // @vuese
   // Used to manually clear the form
@@ -426,7 +428,7 @@ export default class Child extends Vue {
 }
 ```
 
-生成的文档如下：
+生成的表格如下：
 
 |Method|Description|Parameters|
 |---|---|---|
@@ -436,7 +438,7 @@ export default class Child extends Vue {
 
 #### @Prop
 
-还是上面提到的规则，只需要为 `@Prop` 装饰器添加前置注释即可：
+还是上面提到的规则，只需要为 `@Prop` 装饰器添加前导注释即可：
 
 ```js
 @Component
@@ -468,7 +470,7 @@ export default class Child extends Vue {
 
 #### @Emit
 
-你只需要给 `@Emit` 装饰器添加前置注释，规则与上面提到的事件相同：
+你只需要给 `@Emit` 装饰器添加前导注释，规则与上面提到的事件相同：
 
 ```js
 @Component
@@ -496,6 +498,8 @@ export default class Child extends Vue {
 :::
 
 ### jsx / tsx
+
+[TODO]
 
 ## 快速以文档的方式预览组件
 
@@ -603,11 +607,11 @@ methods: {
 }
 ```
 
-没有任何注释的情况下，`vuese` 只知道这个方法的名字叫 `clear`，它并不知道这个方法是否需要提供给组件的使用者，也不知道这个方法的作用，更不知道这个方法接收的参数代表什么。所以很自然的，使用 `@vuese` 来呼叫 `vuese`，告诉它这个方法是需要它为其生成文档的，顺添加一行注释，这样 `vuese` 就知道了这个方法的作用，然后再添加一条注释用来告诉 `vuese` 该方法接收参数的作用，为了将参数的描述与函数的描述区分开，所以你需要在参数的描述前添加 `@arg` 注解。还是那句话，一切都很自然。
+没有任何注释的情况下，`vuese` 只知道这个方法的名字叫 `clear`，它并不知道这个方法是否需要提供给组件的使用者，也不知道这个方法的作用，更不知道这个方法接收的参数代表什么。所以很自然的，使用 `@vuese` 注解来呼叫 `vuese`，告诉它这个方法是需要它为其生成文档的，为了让 `vuese` 知道该方法的用途，所以我们又添加了一行没有注解的注释，然后再添加一条注释用来告诉 `vuese` 该方法接收参数的作用，为了将参数的描述与函数的描述区分开，所以我们需要在参数的描述前添加 `@arg` 注解。还是那句话，一切都很自然。
 
 另一个需要澄清的是，注释是无序的，如下两种注释意义相同：
 
-```js {2}
+```js
 methods: {
   // @vuese
   // Used to manually clear the form
@@ -618,7 +622,7 @@ methods: {
 }
 ```
 
-```js {4}
+```js
 methods: {
   // Used to manually clear the form
   // @arg The argument is a boolean value representing xxx
@@ -654,7 +658,7 @@ Used to manually clear the form
 
 如果你的描述比较冗长：
 
-```js {4}
+```js
 methods: {
   // @arg The first parameter represents xxx and the second parameter represents xxx
   // This function can be used for xxx and can also be used for xxx
@@ -666,7 +670,7 @@ methods: {
 
 你还可以拆分他们：
 
-```js {4}
+```js
 methods: {
   // @arg The first parameter represents xxx
   // @arg and the second parameter represents xxx
