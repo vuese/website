@@ -1,5 +1,7 @@
 # 概览
 
+> One-stop solution for vue component documentation
+
 [Vuese](https://github.com/vuese/vuese) 为你的 `vue` 组件自动生成文档，它提供了多种生成组件文档的解决方案，用来满足你不同的需求。
 
 ## @vuese/cli
