@@ -84,7 +84,7 @@ props: {
 }
 ```
 
-In the absence of any annotations circumstances, `vuese` produces the following table:
+In the absence of any comments circumstances, `vuese` produces the following table:
 
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
