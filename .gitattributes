@@ -1,2 +1,2 @@
 scripts/* linguist-vendored
-*.md         text
+*.md linguist-language=markdown
