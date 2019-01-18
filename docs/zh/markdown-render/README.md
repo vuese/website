@@ -115,4 +115,11 @@ interface RenderResult {
 
 ## 实例方法 - renderMarkdown
 
-调用 `r.renderMarkdown()` 函数，会返回完整的 `markdown` 字符串。本质上就是把 `r.render()` 函数的返回值做拼装处理。
+调用 `r.renderMarkdown()` 函数，会返回完整的 `markdown` 字符串和组件名称。本质上就是把 `r.render()` 函数的返回值做拼装处理:
+
+```ts
+interface MarkdownResult {
+  content: string
+  componentName: string
+}
+```

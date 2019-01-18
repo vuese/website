@@ -116,4 +116,11 @@ An example is:
 
 ## Instance method - renderMarkdown
 
-Calling the `r.renderMarkdown()` function returns the full `markdown` string. Essentially, that's the combination of the return values of the `r.render()` function.
+Calling the `r.renderMarkdown()` function returns the full `markdown` string and component name. Essentially, that's the combination of the return values of the `r.render()` function:
+
+```ts
+interface MarkdownResult {
+  content: string
+  componentName: string
+}
+```
