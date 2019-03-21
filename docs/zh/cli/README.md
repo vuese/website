@@ -497,9 +497,104 @@ export default class Child extends Vue {
 如果你没有为 `@Emit()` 装饰器提供参数，则会把被 `@Emit()` 装饰器修饰的函数的名字转换成由连字符(`-`)组成的字符串，并作为事件的名称。
 :::
 
+### mixins <Badge text="2.2.0+"/>
+
+有时你需要明确的知道当前组件混入(`Mixins`)了哪些组件/功能，`vuese` 会为你组件中的 `mixins` 选项生成文档，假设我们有如下代码：
+
+```js
+export default {
+  mixins: [MixinA, MixinB, MixinC]
+}
+```
+
+生成的表格如下：
+
+|MixIn|
+|---|
+|MixinA|
+|MixinB|
+|MixinC|
+
 ### jsx / tsx
 
 [TODO]
+
+### 分组 <Badge text="2.1.0+"/>
+
+如果你要生成的是 `Docute` 文档，你可以将组件分组展示，如下图所示：
+
+![group](@imgs/group.png)
+
+实现分组很简单，只需要为你的组件定义添加 `@group [groupName]` 前导注释即可，如下代码所示：
+
+```js {1}
+// @group GroupA
+export default {
+  // ...
+}
+```
+
+当然，默认分组的名字是 `BASIC`。
+
+::: tip
+分组的名字会被转为大写字母展示。
+:::
+
+也适用于 `class` 风格的组件：
+
+```js {4}
+@Component({
+  // ...
+})
+// @group GroupD
+export default class Child extends Vue {}
+```
+
+### 组件的描述
+
+作为文档，你应该使用一句话向使用者介绍组件的用途，`vuese` 也会为你生成组件的描述，只需要在组件定义上添加一行普通的前导注释即可，如下：
+
+```js {1}
+// 这是组件的描述
+export default {
+  // ...
+}
+```
+
+当然这并不与分组(`@group`)冲突：
+
+```js {1,2}
+// 这是组件的描述
+// @group GroupA
+export default {
+  // ...
+}
+```
+
+或者使用多行注释：
+
+```js {1-4}
+/** 
+ * @group GroupA
+ * This is a description of the component
+ */
+export default {
+  // ...
+}
+```
+
+也适用于 `class` 风格的组件：
+
+```js {4-7}
+@Component({
+  // ...
+})
+/** 
+ * @group GroupA
+ * This is a description of the component
+ */
+export default class Child extends Vue {}
+```
 
 ## 快速以文档的方式预览组件
 

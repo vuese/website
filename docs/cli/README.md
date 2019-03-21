@@ -494,9 +494,104 @@ The generated table is as follows:
 Note that if no arguments are passed for the `@Emit()` decorator, the function name is converted to a hyphen and used as the name of the event.
 :::
 
+### mixins <Badge text="2.2.0+"/>
+
+`Vuese` will generate documents for the `mixins` option in your component, assuming we have the following code
+
+```js
+export default {
+  mixins: [MixinA, MixinB, MixinC]
+}
+```
+
+The generated table is as follows:
+
+|MixIn|
+|---|
+|MixinA|
+|MixinB|
+|MixinC|
+
 ### jsx / tsx
 
 [TODO]
+
+### Group <Badge text="2.1.0+"/>
+
+If you are generating a `Docute` document, you can group the components, as shown in the following figure:
+
+![group](@imgs/group.png)
+
+Grouping shows is simple, just add `@group [GroupName]` leading comments to your component definition, as shown in the following code:
+
+```js {1}
+// @group GroupA
+export default {
+  // ...
+}
+```
+
+If you do not specify a group name, the component is automatically categorized under the `BASIC` group.
+
+::: tip
+Grouped names are converted to uppercase letters.
+:::
+
+Also available for class-style components:
+
+```js {4}
+@Component({
+  // ...
+})
+// @group GroupD
+export default class Child extends Vue {}
+```
+
+### Description of the component
+
+As a document, you should use a single sentence to introduce the purpose of the component to the user, and `Vuese` will also generate a description of the component for you, simply by adding regular leading comments to the component definition, as follows:
+
+```js {1}
+// This is a description of the component
+export default {
+  // ...
+}
+```
+
+Of course, this does not conflict with grouping(`@group`):
+
+```js {1,2}
+// This is a description of the component
+// @group GroupA
+export default {
+  // ...
+}
+```
+
+Or use multiple lines of comments:
+
+```js {1-4}
+/** 
+ * @group GroupA
+ * This is a description of the component
+ */
+export default {
+  // ...
+}
+```
+
+Also available for class-style components:
+
+```js {4-7}
+@Component({
+  // ...
+})
+/** 
+ * @group GroupA
+ * This is a description of the component
+ */
+export default class Child extends Vue {}
+```
 
 ## Quick preview of a component
 
