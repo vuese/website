@@ -55,6 +55,9 @@ export interface ParserOptions {
   onSlot?: {
     (slotRes: SlotResult): void
   }
+  onMixIn?: {
+    (mixInRes: MixInResult): void
+  }
   onName?: {
     (name: string): void
   },
@@ -77,17 +80,23 @@ Triggered when the parser encounters `prop`, the argument is the result of `prop
 
 Triggered when the parser encounters an event, the argument is the result of the event being processed, see: [EventResult](#events-result).
 
+#### onMethod
+
+* Type: `(methodRes: MethodResult): void`
+
+Triggered when the parser encounters a method, the argument is the result of the method being processed, see: [MethodResult](#methods-result).
+
 #### onSlot
 
 * Type: `(slotRes: SlotResult): void`
 
 Triggered when the parser encounters a slot, the argument is the result of the slot being processed, see: [SlotResult](#slots-result).
 
-#### onMethod
+#### onMixIn
 
-* Type: `(methodRes: MethodResult): void`
+* Type: `(mixInRes: MixInResult): void`
 
-Triggered when the parser encounters a method, the argument is the result of the method being processed, see: [MethodResult](#methods-result).
+Triggered when the parser encounters the `mixins` option, the argument is the result of `mixins` being processed, see: [Mixinresult](#mixin-result)
 
 #### onName
 
@@ -182,6 +191,14 @@ interface MethodResult {
   name: string
   describe?: string[]
   argumentsDesc?: string[]
+}
+```
+
+## MixIn Result
+
+```ts
+export interface MixInResult {
+  mixIn: string
 }
 ```
 

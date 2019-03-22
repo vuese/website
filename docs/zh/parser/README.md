@@ -55,6 +55,9 @@ export interface ParserOptions {
   onSlot?: {
     (slotRes: SlotResult): void
   }
+  onMixIn?: {
+    (mixInRes: MixInResult): void
+  }
   onName?: {
     (name: string): void
   },
@@ -77,17 +80,23 @@ export interface ParserOptions {
 
 当解析器遇到事件时触发，参数是事件被处理后的结果，查看：[EventResult](#events-result)
 
+#### onMethod
+
+* 类型：`(methodRes: MethodResult): void`
+
+当解析器遇到方法时触发，参数是方法被处理后的结果，查看：[MethodResult](#methods-result)
+
 #### onSlot
 
 * 类型：`(slotRes: SlotResult): void`
 
 当解析器遇到插槽时触发，参数是插槽被处理后的结果，查看：[SlotResult](#slots-result)
 
-#### onMethod
+#### onMixIn
 
-* 类型：`(methodRes: MethodResult): void`
+* 类型：`(mixInRes: MixInResult): void`
 
-当解析器遇到方法时触发，参数是方法被处理后的结果，查看：[MethodResult](#methods-result)
+当解析器遇到 `mixins` 选项时触发，参数是 `mixins` 被处理后的结果，查看：[MixInResult](#mixin-result)
 
 #### onName
 
@@ -182,6 +191,14 @@ interface MethodResult {
   name: string
   describe?: string[]
   argumentsDesc?: string[]
+}
+```
+
+## MixIn Result
+
+```ts
+export interface MixInResult {
+  mixIn: string
 }
 ```
 
