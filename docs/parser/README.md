@@ -92,7 +92,7 @@ Triggered when the parser encounters a method, the argument is the result of the
 
 Triggered when the parser encounters a slot, the argument is the result of the slot being processed, see: [SlotResult](#slots-result).
 
-#### onMixIn
+#### onMixIn <Badge text="2.1.0+"/>
 
 * Type: `(mixInRes: MixInResult): void`
 
@@ -194,7 +194,7 @@ interface MethodResult {
 }
 ```
 
-## MixIn Result
+## MixIn Result <Badge text="2.1.0+"/>
 
 ```ts
 export interface MixInResult {

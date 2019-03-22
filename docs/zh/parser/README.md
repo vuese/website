@@ -92,7 +92,7 @@ export interface ParserOptions {
 
 当解析器遇到插槽时触发，参数是插槽被处理后的结果，查看：[SlotResult](#slots-result)
 
-#### onMixIn
+#### onMixIn <Badge text="2.1.0+"/>
 
 * 类型：`(mixInRes: MixInResult): void`
 
@@ -194,7 +194,7 @@ interface MethodResult {
 }
 ```
 
-## MixIn Result
+## MixIn Result <Badge text="2.1.0+"/>
 
 ```ts
 export interface MixInResult {
