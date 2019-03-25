@@ -732,6 +732,46 @@ root
 ├──├──├──  ButtonGroup.md
 ```
 
+### babelParserPlugins
+
+* Type: `object`
+* Default:
+
+```js
+{
+  objectRestSpread: true,
+  dynamicImport: true,
+  'decorators-legacy': true,
+  classProperties: true,
+  typescript: true,
+  jsx: true
+}
+```
+
+`Vuese` uses [@babel/parser](https://babeljs.io/docs/en/babel-parser) to parse the `<script>` language block, and the `babelParserPlugins` option accepts all optional values in [@babel/parser 的 plugsins](https://babeljs.io/docs/en/babel-parser#plugins), which gives you the mechanism to customize the parsing behavior based on your project. For example: By default both `babelParserPlugins.jsx` and `babelParserPlugins.typescript` are `true`, which means that `vuese` handles `TS` and `TSX` correctly by default, but does not correctly handle the following types assertions:
+
+```js
+(<any>this).$refs.navBar.offsetHeight
+```
+
+You should use the `as` operator instead:
+
+```js
+(this as any).$refs.navBar.offsetHeight
+```
+
+This is because TypeScript disallows angle bracket type assertions in the `.tsx` file, but you may not use `tsx`, you can disable it by specifying `jsx: false` in the `.vueserc` configuration file, this will allow angle bracket type assertions:
+
+```js
+// .vueserc
+{
+  // ...
+  babelParserPlugins: {
+    jsx: false
+  }
+}
+```
+
 ## About comments
 
 When you get here, you should understand what is: ** The process of writing a document is to write comments for your code**. In fact, without any comments, `vuese` has gotten any information it can get. Comments are just a means of providing more information, `vuese` tries to reduce the use of annotations(`@xxx`), the purpose is to reduce the cost of learning. In other words, you don't need to spend a lot of time to remember a lot of annotations.

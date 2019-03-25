@@ -64,7 +64,7 @@ export interface ParserOptions {
   onDesc?: {
     (desc: CommentResult): void
   },
-  babelParserPlugins?: ParserPlugin[]
+  babelParserPlugins?: BabelParserPlugins
 }
 ```
 
@@ -112,7 +112,11 @@ export interface ParserOptions {
 
 #### babelParserPlugins
 
-* 类型：`ParserPlugin[]`
+* 类型：`BabelParserPlugins`:
+
+```js
+export type BabelParserPlugins = { [key in ParserPlugin]?: boolean }
+```
 
 用来为 `babel parser` 指定插件列表，全部列表可以查看：[https://babeljs.io/docs/en/babel-parser#plugins](https://babeljs.io/docs/en/babel-parser#plugins)
 
@@ -129,11 +133,16 @@ interface ParserResult {
   props?: PropsResult[]
   events?: EventResult[]
   slots?: SlotResult[]
+  mixIns?: MixInResult[]
   methods?: MethodResult[]
   name?: string
   componentDesc?: CommentResult
 }
 ```
+
+::: warning
+`mixIns` 仅在 `2.1.0+` 的版本中支持
+:::
 
 ## Props Result
 

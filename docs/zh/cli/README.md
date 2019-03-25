@@ -737,6 +737,46 @@ root
 ├──├──├──  ButtonGroup.md
 ```
 
+### babelParserPlugins
+
+* Type: `object`
+* Default:
+
+```js
+{
+  objectRestSpread: true,
+  dynamicImport: true,
+  'decorators-legacy': true,
+  classProperties: true,
+  typescript: true,
+  jsx: true
+}
+```
+
+`vuese` 使用 [@babel/parser](https://babeljs.io/docs/en/babel-parser) 解析 `<script>` 标签块，`babelParserPlugins` 选项接收所有 [@babel/parser 的 plugsins](https://babeljs.io/docs/en/babel-parser#plugins) 中的可选值，这给了你根据你的项目进行自定义解析行为的机制。例如：默认情况下 `babelParserPlugins.jsx` 和 `babelParserPlugins.typescript` 都为 `true`，这意味着在默认情况下 `vuese` 能够正确的处理 `TS` 和 `TSX`，但是却不能正确处理下面的类型断言写法：
+
+```js
+(<any>this).$refs.navBar.offsetHeight
+```
+
+你应该使用 `as` 操作符替代：
+
+```js
+(this as any).$refs.navBar.offsetHeight
+```
+
+这是因为 `typescript` 在 `.tsx` 文件里禁用了尖括号的类型断言，但你可能并没有使用 `tsx`，这时你可以在 `.vueserc` 配置文件中指定 `jsx: false` 来关闭对 `jsx` 的处理，这样就能够支持 `<any>this` 的类型断言了：
+
+```js
+// .vueserc
+{
+  // ...
+  babelParserPlugins: {
+    jsx: false
+  }
+}
+```
+
 ## 关于注释
 
 到了这里，你应该理解了什么是：**编写文档的过程就是为你的代码编写注释**。实际上，在没有任何注释的情况下，`vuese` 已经拿到了它所能拿到的任何信息，注释只是一种提供更多信息的手段，`vuese` 尽量在减少注解(`@xxx`)的使用场景，目的是为了学习成本。换句话说你不需要花精力去记住大量的注解。

@@ -64,7 +64,7 @@ export interface ParserOptions {
   onDesc?: {
     (desc: CommentResult): void
   },
-  babelParserPlugins?: ParserPlugin[]
+  babelParserPlugins?: BabelParserPlugins
 }
 ```
 
@@ -114,6 +114,10 @@ Triggered when the parser encounters a comment node that describes the component
 
 * Type: `ParserPlugin[]`
 
+```js
+export type BabelParserPlugins = { [key in ParserPlugin]?: boolean }
+```
+
 Used to specify a list of plugins for `babel parser`, all of which can be viewed: [https://babeljs.io/docs/en/babel-parser#plugins](https://babeljs.io/docs/en/babel-Parser#plugins)
 
 ::: tip
@@ -129,11 +133,16 @@ interface ParserResult {
   props?: PropsResult[]
   events?: EventResult[]
   slots?: SlotResult[]
+  mixIns?: MixInResult[]
   methods?: MethodResult[]
   name?: string
   componentDesc?: CommentResult
 }
 ```
+
+::: warning
+`mixIns` is only supported in the `2.1.0+` version
+:::
 
 ## Props Result
 
