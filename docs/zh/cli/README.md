@@ -596,6 +596,55 @@ export default {
 export default class Child extends Vue {}
 ```
 
+### 注意事项
+
+::: warning
+当组件没有任何的 `props`、`slots`、`events` 以及 `methods`(使用了 `@vuese`)时，`vuese` 不会为其生成文档。
+:::
+
+可以改变这个默认行为，你需要保证组件满足以下两个条件：
+
+- 1、在组件定义上使用 `@vuese` 注解，例如：
+
+```js {1}
+// @vuese
+export default {
+  // ...
+}
+```
+
+或者 `TypeScript` 中：
+
+```js {1}
+// @vuese
+export default class ActionBar extends Vue {
+  // ...
+}
+```
+
+- 2、除了要在组件定义上添加 `@vuese` 注解之外，必须保证组件拥有 `name` 选项：
+
+```js {1}
+// @vuese
+export default {
+  name: 'MyComponent'
+}
+```
+
+在 `TypeScript` 中：
+
+```js {1-4}
+@Component({
+	name: 'MyComponent'
+})
+// @vuese
+export default class MyComponent extends Vue {
+  // ...
+}
+```
+
+当组件满足以上两个条件之后，即使组件没有任何的 `props`、`slots`、`events` 以及 `methods`(使用了 `@vuese`)，`vuese` 依然会为其生成文档，当然了，文档中只会包含组件名称和组件的描述。
+
 ## 快速以文档的方式预览组件
 
 如果你不想生成文档，而只是希望以文档的方式快速的预览一个组件，当然可以，运行如下命令：

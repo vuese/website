@@ -593,6 +593,55 @@ Also available for class-style components:
 export default class Child extends Vue {}
 ```
 
+### Precautions
+
+::: warning
+When the component does not have any `props`, `slots`, `events`, and `methods`(using `@vuese`), `vuese` does not generate documentation for it.
+:::
+
+You can change this default behavior, you need to ensure that the component meets the following two conditions:
+
+- 1、Use the `@vuese` annotation on the component definition, for example:
+
+```js {1}
+// @vuese
+export default {
+  // ...
+}
+```
+
+Or in `TypeScript`:
+
+```js {1}
+// @vuese
+export default class ActionBar extends Vue {
+  // ...
+}
+```
+
+- 2、In addition to adding the `@vuese` annotation to the component definition, you must ensure that the component has the `name` option:
+
+```js {1}
+// @vuese
+export default {
+  name: 'MyComponent'
+}
+```
+
+In `TypeScript`:
+
+```js {1-4}
+@Component({
+	name: 'MyComponent'
+})
+// @vuese
+export default class MyComponent extends Vue {
+  // ...
+}
+```
+
+After the component satisfies the above two conditions, even if the component does not have any `props`、`slots`、 `events`、and `methods`(using `@vuese`), `vuese` will still generate documentation for it. Of course, only the component's name and description will be included in the document.
+
 ## Quick preview of a component
 
 If you don't want to generate a document, but just want to quickly preview a component as a document, of course, run the following command:
