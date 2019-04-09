@@ -737,6 +737,55 @@ root
 ├──├──├──  ButtonGroup.md
 ```
 
+### markdownFile <Badge text="2.3.0+"/>
+
+* Type: `string`
+* Default: `''`
+
+:::tip
+仅当 `genType: markdown` 且 `markdownDir: *` 时有效。
+:::
+
+用来指定生成的 `markdown` 文件的名字，当你希望为不同组件生成相同名字的文档时会很有用，例如你的目录结构如下：
+
+```
+root
+├── src
+├──├──  components
+├──├──├──  Button
+├──├──├──├──  index.vue
+├──├──├──  ButtonGroup
+├──├──├──├──  index.vue
+```
+
+如果不指定 `markdownFile`，则结果如下：
+
+``` {6,9}
+root
+├── src
+├──├──  components
+├──├──├──  Button
+├──├──├──├──  index.vue
+├──├──├──├──  index.md
+├──├──├──  ButtonGroup
+├──├──├──├──  index.vue
+├──├──├──├──  index.md
+```
+
+你可以通过配置文件或命令行指定 `markdownFile: README`，则结果如下：
+
+``` {6,9}
+root
+├── src
+├──├──  components
+├──├──├──  Button
+├──├──├──├──  index.vue
+├──├──├──├──  README.md
+├──├──├──  ButtonGroup
+├──├──├──├──  index.vue
+├──├──├──├──  README.md
+```
+
 ### babelParserPlugins
 
 * Type: `object`

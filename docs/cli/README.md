@@ -732,6 +732,55 @@ root
 ├──├──├──  ButtonGroup.md
 ```
 
+### markdownFile <Badge text="2.3.0+"/>
+
+* Type: `string`
+* Default: `''`
+
+:::tip
+Only valid when `genType: markdown` and `markdownDir: *`.
+:::
+
+It is used to specify the name of the generated `markdown` file, and it is useful when you want to generate documents of the same name for different components. For example, your directory structure is as follows:
+
+```
+root
+├── src
+├──├──  components
+├──├──├──  Button
+├──├──├──├──  index.vue
+├──├──├──  ButtonGroup
+├──├──├──├──  index.vue
+```
+
+If you do not specify `markdownFile`, the result is as follows:
+
+``` {6,9}
+root
+├── src
+├──├──  components
+├──├──├──  Button
+├──├──├──├──  index.vue
+├──├──├──├──  index.md
+├──├──├──  ButtonGroup
+├──├──├──├──  index.vue
+├──├──├──├──  index.md
+```
+
+You can specify `markdownFile: README` through a configuration file or command line, and the result is as follows:
+
+``` {6,9}
+root
+├── src
+├──├──  components
+├──├──├──  Button
+├──├──├──├──  index.vue
+├──├──├──├──  README.md
+├──├──├──  ButtonGroup
+├──├──├──├──  index.vue
+├──├──├──├──  README.md
+```
+
 ### babelParserPlugins
 
 * Type: `object`
