@@ -14,7 +14,7 @@ yarn add @vuese/markdown-render
 ```js {11-15}
 // Import parser function
 import { parser } from '@vuese/parser'
-import Render from '@vuese/markdown-render'
+import { Render } from '@vuese/markdown-render'
 
 // Read vue file content
 const source = fs.readFileSync('path-to-your-component.vue', 'utf-8')
