@@ -52,18 +52,27 @@ export interface ParserOptions {
   onMethod?: {
     (methodRes: MethodResult): void
   }
-  onSlot?: {
-    (slotRes: SlotResult): void
+  onComputed?: {
+    (computedRes: ComputedResult): void
   }
   onMixIn?: {
     (mixInRes: MixInResult): void
   }
+  onData?: {
+    (dataRes: DataResult): void
+  }
+  onSlot?: {
+    (slotRes: SlotResult): void
+  }
   onName?: {
     (name: string): void
-  },
+  }
   onDesc?: {
     (desc: CommentResult): void
-  },
+  }
+  onWatch?: {
+    (watch: WatchResult): void
+  }
   babelParserPlugins?: BabelParserPlugins
 }
 ```
@@ -109,6 +118,24 @@ export interface ParserOptions {
 * 类型：`(desc: CommentResult): void`
 
 当解析器遇到用来描述组件的注释节点时触发，参数是被处理后的注释信息，查看：[CommentResult](#comment-result)
+
+#### onComputed <Badge text="2.3.0+"/>
+
+* 类型：`(computedRes: ComputedResult): void`
+
+当解析器遇到计算属性时触发，参数是计算属性被处理后的结果，查看：[ComputedResult](#computed-result)
+
+#### onData <Badge text="2.3.0+"/>
+
+* 类型：`(dataRes: DataResult): void`
+
+当解析器遇到 `data` 选项时触发，参数是 `data` 被处理后的结果，查看：[DataResult](#data-result)
+
+#### onWatch <Badge text="2.3.0+"/>
+
+* 类型：`(watch: WatchResult): void`
+
+当解析器遇到 `watch` 选项时触发，参数是 `watch` 被处理后的结果，查看：[WatchResult](#watch-result)
 
 #### babelParserPlugins
 
@@ -208,6 +235,38 @@ interface MethodResult {
 ```ts
 export interface MixInResult {
   mixIn: string
+}
+```
+
+## Computed Result <Badge text="2.3.0+"/>
+
+```ts
+export interface ComputedResult {
+  name: string
+  type?: string[]
+  describe?: string[]
+  isFromStore: boolean
+}
+```
+
+## Data Result <Badge text="2.3.0+"/>
+
+```ts
+export interface DataResult {
+  name: string
+  type: string
+  describe?: string[]
+  default?: string
+}
+```
+
+## Watch Result <Badge text="2.3.0+"/>
+
+```ts
+export interface WatchResult {
+  name: string
+  describe?: string[]
+  argumentsDesc?: string[]
 }
 ```
 

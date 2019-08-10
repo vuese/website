@@ -52,18 +52,27 @@ export interface ParserOptions {
   onMethod?: {
     (methodRes: MethodResult): void
   }
-  onSlot?: {
-    (slotRes: SlotResult): void
+  onComputed?: {
+    (computedRes: ComputedResult): void
   }
   onMixIn?: {
     (mixInRes: MixInResult): void
   }
+  onData?: {
+    (dataRes: DataResult): void
+  }
+  onSlot?: {
+    (slotRes: SlotResult): void
+  }
   onName?: {
     (name: string): void
-  },
+  }
   onDesc?: {
     (desc: CommentResult): void
-  },
+  }
+  onWatch?: {
+    (watch: WatchResult): void
+  }
   babelParserPlugins?: BabelParserPlugins
 }
 ```
@@ -109,6 +118,24 @@ Triggered when the parser encounters the component's `name` option, the argument
 * Type: `(desc: CommentResult): void`
 
 Triggered when the parser encounters a comment node that describes the component. The parameter is the comment information after processing. see: [CommentResult](#comment-result)]
+
+#### onComputed <Badge text="2.3.0+"/>
+
+* Type: `(computedRes: ComputedResult): void`
+
+Triggered when the parser encounters a computed property, the argument is the result of the computed property being processed, see:[ComputedResult](#computed-result)
+
+#### onData <Badge text="2.3.0+"/>
+
+* Type: `(dataRes: DataResult): void`
+
+Triggered when the parser encounters the `data` option, the argument is the result of `data` being processed, see:[DataResult](#data-result)
+
+#### onWatch <Badge text="2.3.0+"/>
+
+* Type: `(watch: WatchResult): void`
+
+Triggered when the parser encounters the `watch` option, the argument is the result of the `watch` being processed, see:[WatchResult](#watch-result)
 
 #### babelParserPlugins
 
@@ -208,6 +235,38 @@ interface MethodResult {
 ```ts
 export interface MixInResult {
   mixIn: string
+}
+```
+
+## Computed Result <Badge text="2.3.0+"/>
+
+```ts
+export interface ComputedResult {
+  name: string
+  type?: string[]
+  describe?: string[]
+  isFromStore: boolean
+}
+```
+
+## Data Result <Badge text="2.3.0+"/>
+
+```ts
+export interface DataResult {
+  name: string
+  type: string
+  describe?: string[]
+  default?: string
+}
+```
+
+## Watch Result <Badge text="2.3.0+"/>
+
+```ts
+export interface WatchResult {
+  name: string
+  describe?: string[]
+  argumentsDesc?: string[]
 }
 ```
 
