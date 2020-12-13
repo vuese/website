@@ -650,7 +650,7 @@ If you don't want to generate a document, but just want to quickly preview a com
 vuese preview path-to-your-component.vue
 ```
 
-`vuese` uses [carlo](https://github.com/GoogleChromeLabs/carlo) internally, and when the previewed component changes, the document is updated in real time.
+`vuese` uses [puppeteer-core](https://github.com/puppeteer/puppeteer) internally, and when the previewed component changes, the document is updated in real time.
 
 As shown below:
 

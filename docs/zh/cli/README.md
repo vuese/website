@@ -653,7 +653,7 @@ export default class MyComponent extends Vue {
 vuese preview path-to-your-component.vue
 ```
 
-`vuese` 内部使用 [carlo](https://github.com/GoogleChromeLabs/carlo)，当你预览的组件变更时，文档会实时更新。
+`vuese` 内部使用 [puppeteer-core](https://github.com/puppeteer/puppeteer)，当你预览的组件变更时，文档会实时更新。
 
 一个例子：
 
