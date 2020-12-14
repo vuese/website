@@ -17,5 +17,6 @@ jobs:
       with:
         node-version: 12.x
     - run: npm i -g yarn
+    - run: yarn
     - run: chmod +x ./scripts/deploy.sh
     - run: ./scripts/deploy.sh
