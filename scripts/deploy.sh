@@ -9,9 +9,6 @@ npm run build
 # navigate into the build output directory
 cd docs/.vuepress/dist
 
-# if you are deploying to a custom domain
-echo 'vuese.org' > CNAME
-
 git init
 git config user.name 'HcySunYang'
 git config user.email 'HcySunYang@outlook.com'
